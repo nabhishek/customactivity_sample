@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CleanupTask.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Thumbprint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7E396C82FBCC84D05EA3D4EA75E43853FF06F686</Value>
+    </Setting>
+    <Setting Name="ClientId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c06930ba-d371-4d82-acab-63bef29fa6b4</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
