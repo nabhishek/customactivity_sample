@@ -1,0 +1,36 @@
+{
+    "name": "MyCustomActivity",
+    "type": "Custom",
+    "linkedServiceName": {
+        "referenceName": "AzureBatchLinkedService",
+        "type": "LinkedServiceReference"
+    },
+    "typeProperties": {
+        "command": "ListAll.exe",
+        "resourceLinkedService": {
+            "referenceName": "StorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "folderPath": "testresources/folder1/folder2",
+        "referenceObjects": {
+            "linkedServices": [
+                {
+                    "referenceName": "AzureKeyVaultLinkedService",
+                    "type": "LinkedServiceReference"
+                }
+            ]
+        },
+      "extendedProperties": {
+        "connectionString": {
+          "type": "AzureKeyVaultSecret",
+          "secretName": "ConnectionString",
+          "store": {
+            "referenceName": "AzureKeyVaultLinkedService",
+            "type": "LinkedServiceReference"
+          }
+        },
+        "folderPath": "foldertodelete/foldertodeletelevel2",
+        "container": "containertobedeleted"
+      }
+    }
+}

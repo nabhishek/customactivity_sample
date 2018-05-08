@@ -1,0 +1,9 @@
+[{
+	"name": "AzureKeyVaultLinkedService",
+	"properties": {
+		"type": "AzureKeyVault",
+    "typeProperties": {
+      "baseUrl": "https://tong-akv.vault.azure.net"
+    }
+	}
+}]
