@@ -1,9 +1,27 @@
-[{
-	"name": "AzureKeyVaultLinkedService",
-	"properties": {
-		"type": "AzureKeyVault",
-    "typeProperties": {
-      "baseUrl": "https://tong-akv.vault.azure.net"
+[
+    {
+        "name": "AzureKeyVaultLinkedService",
+        "properties": {
+            "type": "AzureKeyVault",
+          "typeProperties": {
+            "baseUrl": "https://tong-akv.vault.azure.net"
+          }
+        }
+    },
+    {
+        "name": "AzureStorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "typeProperties": {
+                "connectionString": {
+                    "type": "AzureKeyVaultSecret",
+                    "store": {
+                        "referenceName": "AzureKeyVaultLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "secretName": "ConnectionString"
+                }
+            }
+        }
     }
-	}
-}]
+]

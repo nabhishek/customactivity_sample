@@ -32,11 +32,37 @@ namespace CleanupTask
             if (resolveAkvSecret)
             {
                 Console.WriteLine("Start to resolve akv secret in Activity.");
-                activity = await ResolveAkvSecretAsync(activity);
+                await ResolveAkvSecretAsync(activity);
                 Console.WriteLine("Resolve akv secret in Activity Complete.");
             }
 
             return activity;
+        }
+
+        internal static async Task<JArray> ParseLinkedServicesFromInputFileAsync(bool resolveAkvSecret = false)
+        {
+            if (!File.Exists("linkedServices.json"))
+            {
+                throw new FileNotFoundException("linkedServices.json");
+            }
+
+            Console.WriteLine("Start to parse LinkedServices from input file.");
+            // Read Activity Object from input files
+            JArray linkedServices = (JArray)JsonConvert.DeserializeObject(File.ReadAllText("linkedServices.json"));
+
+            if (resolveAkvSecret)
+            {
+                Console.WriteLine("Start to resolve akv secret in LinkedServices.");
+                
+                foreach (var linkedService in linkedServices)
+                {
+                    await ResolveAkvSecretAsync(linkedService);
+                }
+
+                Console.WriteLine("Resolve akv secret in LinkedServices Complete.");
+            }
+
+            return linkedServices;
         }
 
         /***
@@ -52,7 +78,7 @@ namespace CleanupTask
          * }
          * 
          */
-        internal static async Task<JObject> ResolveAkvSecretAsync(JObject obj)
+        internal static async Task<JToken> ResolveAkvSecretAsync(JToken obj)
         {
             if (!File.Exists("linkedServices.json"))
             {

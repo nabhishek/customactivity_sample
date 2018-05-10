@@ -17,18 +17,14 @@
                 {
                     "referenceName": "AzureKeyVaultLinkedService",
                     "type": "LinkedServiceReference"
+                },
+                {
+                    "referenceName": "AzureStorageLinkedService",
+                    "type": "LinkedServiceReference"
                 }
             ]
         },
       "extendedProperties": {
-        "connectionString": {
-          "type": "AzureKeyVaultSecret",
-          "secretName": "ConnectionString",
-          "store": {
-            "referenceName": "AzureKeyVaultLinkedService",
-            "type": "LinkedServiceReference"
-          }
-        },
         "folderPath": "foldertodelete/foldertodeletelevel2",
         "container": "containertobedeleted"
       }

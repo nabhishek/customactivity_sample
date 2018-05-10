@@ -32,9 +32,10 @@ namespace CleanupTask
 
         static async Task ExcuteCustomActivityAsync()
         {
+            JArray linkedServices = await CustomActivityHelper.ParseLinkedServicesFromInputFileAsync(true);
             JObject activity = await CustomActivityHelper.ParseActivityFromInputFileAsync(true);
 
-            string connectionString = activity.GetProperty<string>(@"$..extendedProperties.connectionString");
+            string connectionString = linkedServices.GetProperty<string>(@"$[?(@.name == 'AzureStorageLinkedService')].properties.typeProperties.connectionString");
             string folderName = activity.GetProperty<string>(@"$..extendedProperties.folderPath");
             string containerName = activity.GetProperty<string>(@"$..extendedProperties.container");
 
