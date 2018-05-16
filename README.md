@@ -1,4 +1,5 @@
-## C# Sample for resolving AKV enabled Linked Services JSON and fetching the actual secrets using custom code. Authenticating to AKV via a Certificate. 
+# Summary
+### C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON payload and fetching the actual secrets using custom code. Authenticating to AKV via a Certificate. Then deletes file/folder from the retrieved storage account.
 
 ### For running it on Azure Batch
 1. In code, modify the linkedServices.json accordingly with your AKV URL/ Secret name
