@@ -4,7 +4,7 @@
         "properties": {
             "type": "AzureKeyVault",
           "typeProperties": {
-            "baseUrl": "https://tong-akv.vault.azure.net"
+            "baseUrl": "https://keyvault-abnarain.vault.azure.net/"
           }
         }
     },
@@ -13,14 +13,14 @@
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "type": "AzureKeyVaultSecret",
-                    "store": {
-                        "referenceName": "AzureKeyVaultLinkedService",
-                        "type": "LinkedServiceReference"
-                    },
-                    "secretName": "ConnectionString"
-                }
+              "connectionString": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                  "referenceName": "AzureKeyVaultLinkedService",
+                  "type": "LinkedServiceReference"
+                },
+                "secretName": "contosostorage-connectionstring"
+              }
             }
         }
     }

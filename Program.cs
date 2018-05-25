@@ -36,6 +36,7 @@ namespace CleanupTask
             JObject activity = await CustomActivityHelper.ParseActivityFromInputFileAsync(true);
 
             string connectionString = linkedServices.GetProperty<string>(@"$[?(@.name == 'AzureStorageLinkedService')].properties.typeProperties.connectionString");
+            //folder path and blob container are retrieved from Extended Properties (in the Activity.json)
             string folderName = activity.GetProperty<string>(@"$..extendedProperties.folderPath");
             string containerName = activity.GetProperty<string>(@"$..extendedProperties.container");
 

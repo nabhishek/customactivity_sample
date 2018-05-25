@@ -25,8 +25,8 @@
             ]
         },
       "extendedProperties": {
-        "folderPath": "foldertodelete/foldertodeletelevel2",
-        "container": "containertobedeleted"
+        "folderPath": "000",
+        "container": "source"
       }
     }
 }
