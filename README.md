@@ -28,7 +28,7 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
    -CertStoreLocation "cert:\CurrentUser\My" -KeyLength 2048 -KeySpec Signature
    ```
 
-   ![](D:\Github\customactivity_sample\images\PowerShell_Create_Certificate_CurrentUser_Store.png)
+   ![](images/PowerShell_Create_Certificate_CurrentUser_Store.png)
 
    > [!Note]
    >
@@ -36,35 +36,35 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
 
 2. Go to 'Manage User Certificates' (certmgr.msc) in Control Panel, and locate the certificate under Personal -> Certificates. 
 
-   ![](D:\Github\customactivity_sample\images\certificateManager_UI.png)
+   ![](images/certificateManager_UI.png)
 
 3. Export the private key -  use default options in Export File Format window, set a **password**, **filename**.
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI.png)
+   ![](images/ExportCert_UI.png)
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI_2.png)
+   ![](images/ExportCert_UI_2.png)
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI_3.png)
+   ![](images/ExportCert_UI_3.png)
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI_4.png)
+   ![](images/ExportCert_UI_4.png)
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI_5.png)
+   ![](images/ExportCert_UI_5.png)
 
    
 
 4. Export the public key - use default option, specify **filename**.
 
-   ![](D:\Github\customactivity_sample\images\ExportCert_UI_Public_1.png)
+   ![](images/ExportCert_UI_Public_1.png)
 
-![](D:\Github\customactivity_sample\images\ExportCert_UI_Public_2.png)
+![](images/ExportCert_UI_Public_2.png)
 
-![](D:\Github\customactivity_sample\images\ExportCert_UI_Public_3.png)
+![](images/ExportCert_UI_Public_3.png)
 
-![](D:\Github\customactivity_sample\images\ExportCert_UI_Public_4.png)
+![](images/ExportCert_UI_Public_4.png)
 
 5. You can find the exported files in **C:\Windows\System32**
 
-![](D:\Github\customactivity_sample\images\ExportCert_UI_in_System32.png)
+![](images/ExportCert_UI_in_System32.png)
 
 
 
@@ -72,33 +72,33 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
 
 1. Create an [**Azure Active Directory application**](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application). Get the [Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) and add this value in the ***App.config*** in the **code**.
 
-   ![](D:\Github\customactivity_sample\images\update_code_cofig.png)
+   ![](images/update_code_cofig.png)
 
 2. Upload the **Public key** for **Authentication**, rather than generating a new key for authentication.
 
-   ![](D:\Github\customactivity_sample\images\update_key_AAD_App.png)
+   ![](images/update_key_AAD_App.png)
 
    
 
 #### Grant rights to the Azure Active Directory Application to access KeyVault
 
-1. Navigate to the appropriate **Azure Key Vault** in **Azure Portal**. Click on **Access Policies** and **Add new** ![](D:\Github\customactivity_sample\images\AKV.png)
+1. Navigate to the appropriate **Azure Key Vault** in **Azure Portal**. Click on **Access Policies** and **Add new** ![](images/AKV.png)
 
 
 
 2. **Select** **Principal**, and search for the **Azure Active Directory Application name** created earlier, and click **Select** then **OK**.
 
-![](D:\Github\customactivity_sample\images\AKV_GrantAccess.png)
+![](images/AKV_GrantAccess.png)
 
 3. Click **Save**.
 
-   ![](D:\Github\customactivity_sample\images\AKV_GrantAccess2.png)
+   ![](images/AKV_GrantAccess2.png)
 
 #### For running it on Azure Batch
 
 1. When you run the Custom Activity in Azure Data Factory, the *linkedServices.json* file will be made available to your custom activity code. You would need to configure the *Reference Objects* in Custom Activity to make sure the correct Linked Services are passed into the Custom Activity. 
 
-   ![](D:\Github\customactivity_sample\images\ReferenceObjects_In_ADF_UI.png)
+   ![](images/ReferenceObjects_In_ADF_UI.png)
 
    
 
@@ -106,11 +106,11 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
 
   The easiest way to do this, is a one off task through the portal, **go to your batch account**, then the **“certificates” blade** and click **add**. Upload the **PFX file** we generated earlier and supply the **password**. 
 
-  ![](D:\Github\customactivity_sample\images\batch_cert_add_1.png)
+  ![](images/batch_cert_add_1.png)
 
   
 
-  ![](D:\Github\customactivity_sample\images\batch_cert_add_2.png)
+  ![](images/batch_cert_add_2.png)
 
   Once complete, this should show in the list of certificates and you can verify the thumbprint.
   You can now **create a batch pool** or **select an existing pool**, and you should be able to find the above certificate under the **certificate blade** and then be able to assign the certificate to the pool. When you do so, make sure you select **Store Name** -> *"My"*, **Store Location** -> *“CurrentUser”* for the store location. 
@@ -119,7 +119,7 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
   >
   > This cert will now be available for all the tasks running on the batch pool nodes.
 
-  ![](D:\Github\customactivity_sample\images\batch_cert_add_3.png)
+  ![](images/batch_cert_add_3.png)
 
   
 
@@ -129,9 +129,9 @@ C# Sample for resolving AKV enabled Azure Data Factory's Linked Services JSON pa
 
    2. The *container* and *folder* in the Storage Account that is to be deleted by the Custom Activity needs to be mentioned under Extended Properties in Custom Activity for this Sample. *Make sure the folder and container exists in the respective storage account.* 
 
-      Code parses the extendedProperties in the JSON to retrieve the Container name and Folder path to be deleted.
+      Code parses the *extendedProperties* in the JSON to retrieve the Container name and Folder path to be deleted.
 
-      ![](D:\Github\customactivity_sample\images\ExtendedProperties.png)
+      ![](images/ExtendedProperties.png)
 
    3. Run the Custom Activity, Click **Debug** in [ADF UI](https://adf.azure.com/).
 
