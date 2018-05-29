@@ -165,7 +165,7 @@ namespace CleanupTask
             X509Store store = null;
             try
             {
-                store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+                store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
                 store.Open(OpenFlags.ReadOnly);
                 X509Certificate2Collection certCollection = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
 
